@@ -1,5 +1,6 @@
-from models import Branch, Master, Reg_Types, RegNo_Details
 from rest_framework import serializers
+
+from .models import Branch, Master, Reg_Types, RegNo_Details
 
 
 class CompanyMasterSerializer(serializers.HyperlinkedModelSerializer):
