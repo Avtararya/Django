@@ -3,19 +3,28 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Branch, Master
-from .serializers import BranchSerializer, CompanyMasterSerializer
+from .serializers import BranchSerializer, MasterSerializer
 
 
-@api_view(["GET", "POST", "PUT", "DELETE"])
+@api_view(["GET"])
+def getAllOrganizations(request):
+    return Response(request.data, status=400)
+
+    
+@api_view(["POST"])
 def createOrganization(request):
-    if request.method == "GET":
-        pass
+    serializer = MasterSerializer(data=request.data, context={'request': request})
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=401)
 
-    if request.method == "POST":
-        pass
 
-    if request.method == "PUT":
-        pass
-
-    if request.method == "DELETE":
-        pass
+    
+@api_view(["POST"])
+def createBranch(request):
+    serializer = BranchSerializer(data=request.data, context={'request': request})
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=401)

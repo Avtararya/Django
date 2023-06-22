@@ -3,25 +3,24 @@ from rest_framework import serializers
 from .models import Branch, Master, Reg_Types, RegNo_Details
 
 
-class CompanyMasterSerializer(serializers.HyperlinkedModelSerializer):
+class MasterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Master
         fields = "__all__"
 
 
-class BranchSerializer(serializers.HyperlinkedModelSerializer):
+class BranchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Branch
         fields = "__all__"
 
 
-class RegTypesSerializer(serializers.HyperlinkedModelSerializer):
+class RegTypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reg_Types
         fields = "__all__"
 
-
-class RegNoDetailsSerializer(serializers.HyperlinkedModelSerializer):
+class RegNoDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = RegNo_Details
         fields = "__all__"
