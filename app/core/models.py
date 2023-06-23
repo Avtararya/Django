@@ -14,7 +14,7 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         if not email:
-            raise ValueError('user must have an email address.')
+            raise ValueError('enter valid email address.')
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -42,54 +42,54 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 
-# class Master(models.Model):
-#     user = models.ForeignKey(
-#         settings.AUTH_USER_MODEL,
-#         on_delete=models.CASCADE,
-#     )
-#     name = models.CharField(null=True)
-#     code = models.CharField(null=True)
-#     country_id = models.CharField(null=True)
-#     company_id = models.CharField(null=True)
-#     is_global = models.IntegerField(null=True)
-#     is_active = models.IntegerField(null=True)
-#     is_consignor = models.IntegerField(null=True)
-#     is_consignee = models.IntegerField(null=True)
-#     is_agent = models.IntegerField(null=True)
-#     is_transporter = models.IntegerField(null=True)
-#     is_broker = models.IntegerField(null=True)
-#     is_service_provider = models.IntegerField(null=True)
-#     is_acc_receivable = models.IntegerField(null=True)
-#     is_acc_payable = models.IntegerField(null=True)
-#     is_active_rem = models.IntegerField(null=True)
-#     is_air_transport = models.IntegerField(null=True)
-#     trans_airline_id = models.BigIntegerField(null=True)
-#     is_sea_transport = models.IntegerField(null=True)
-#     trans_sealine_id = models.BigIntegerField(null=True)
-#     is_road_transport = models.IntegerField(null=True)
-#     is_rail_transport = models.IntegerField(null=True)
-#     location_id = models.BigIntegerField(null=True)
-#     comp_type = models.CharField(null=True)
-#     exptr_type = models.CharField(null=True)
-#     kyc_details_present = models.CharField(null=True)
-#     doc_status = models.CharField(null=True)
-#     sales_person_id = models.BigIntegerField(null=True)
-#     is_affiliate = models.IntegerField(null=True)
-#     aff_company_id = models.BigIntegerField(null=True)
-#     denied_party_status = models.CharField(null=True)
-#     denied_party_checked_on = models.CharField(null=True)
-#     sales_person_user_id = models.BigIntegerField(null=True)
-#     global_org_id = models.BigIntegerField(null=True)
-#     global_org = models.CharField(null=True)
-#     pay_method = models.CharField(null=True)
-#     org_edi_code = models.CharField(null=True)
-#     exptr_status = models.CharField(null=True)
-#     leid = models.CharField(null=True)
-#     created_at = models.DateField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
+class MasterOrg(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    name = models.CharField(max_length=255, null=True)
+    code = models.CharField(max_length=255, null=True)
+    country_id = models.CharField(max_length=255, null=True)
+    company_id = models.CharField(max_length=255, null=True)
+    is_global = models.IntegerField(null=True)
+    is_active = models.IntegerField(null=True)
+    is_consignor = models.IntegerField(null=True)
+    is_consignee = models.IntegerField(null=True)
+    is_agent = models.IntegerField(null=True)
+    is_transporter = models.IntegerField(null=True)
+    is_broker = models.IntegerField(null=True)
+    is_service_provider = models.IntegerField(null=True)
+    is_acc_receivable = models.IntegerField(null=True)
+    is_acc_payable = models.IntegerField(null=True)
+    is_active_rem = models.IntegerField(null=True)
+    is_air_transport = models.IntegerField(null=True)
+    trans_airline_id = models.BigIntegerField(null=True)
+    is_sea_transport = models.IntegerField(null=True)
+    trans_sealine_id = models.BigIntegerField(null=True)
+    is_road_transport = models.IntegerField(null=True)
+    is_rail_transport = models.IntegerField(null=True)
+    location_id = models.BigIntegerField(null=True)
+    comp_type = models.CharField(max_length=255, null=True)
+    exptr_type = models.CharField(max_length=255, null=True)
+    kyc_details_present = models.CharField(max_length=255, null=True)
+    doc_status = models.CharField(max_length=255, null=True)
+    sales_person_id = models.BigIntegerField(null=True)
+    is_affiliate = models.IntegerField(null=True)
+    aff_company_id = models.BigIntegerField(null=True)
+    denied_party_status = models.CharField(max_length=255, null=True)
+    denied_party_checked_on = models.CharField(max_length=255, null=True)
+    sales_person_user_id = models.BigIntegerField(null=True)
+    global_org_id = models.BigIntegerField(null=True)
+    global_org = models.CharField(max_length=255, null=True)
+    pay_method = models.CharField(max_length=255, null=True)
+    org_edi_code = models.CharField(max_length=255, null=True)
+    exptr_status = models.CharField(max_length=255, null=True)
+    leid = models.CharField(max_length=255, null=True)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
 
 
 # class Branch(models.Model):
