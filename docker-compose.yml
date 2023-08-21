@@ -20,16 +20,15 @@ services:
       - DB_USER=viser
       - DB_PASS=root
     depends_on:
-      - db  
+      - db
   db:
     image: postgres:13-alpine
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=skylink
-      - POSTGRES_USER=viser  
-      - POSTGRES_PASSWORD=root  
-
+      - POSTGRES_USER=viser
+      - POSTGRES_PASSWORD=root
 
 volumes:
   dev-db-data:
