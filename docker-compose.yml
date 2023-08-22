@@ -16,19 +16,32 @@ services:
              python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
-      - DB_NAME=skylink
-      - DB_USER=viser
+      - DB_NAME=postgres
+      - DB_USER=postgres
       - DB_PASS=root
     depends_on:
       - db
   db:
     image: postgres:13-alpine
+    ports:
+      - "5432"
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=skylink
-      - POSTGRES_USER=viser
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    ports:
+      - "420:80"
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    environment:
+      PGADMIN_DEFAULT_EMAIL: viser@co.in
+      PGADMIN_DEFAULT_PASSWORD: root
 
 volumes:
   dev-db-data:

@@ -15,7 +15,10 @@ def generate_invoice_xml(request):
         )
 
         template_name = f'invoice_format{invoice.invoice_format}.xml'
-        template_path = os.path.join('/Users/someshkhade/Desktop', 'xml', template_name)
+        template_path = os.path.join('/Users/someshkhade/Desktop/xml', template_name)
+
+        # Debugging: Print template_path to verify the constructed path
+        print("Template Path:", template_path)
 
         if os.path.exists(template_path):
             with open(template_path, 'r') as template_file:
@@ -27,4 +30,6 @@ def generate_invoice_xml(request):
             response['Content-Disposition'] = f'attachment; filename=invoice_{invoice.invoice_number}.xml'
             return response
         else:
+            # Debugging: Print the directory contents to verify the file presence
+            print("Directory Contents:", os.listdir('/Users/someshkhade/Desktop/xml'))
             return HttpResponse("Template file not found", status=404)
