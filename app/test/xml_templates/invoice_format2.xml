@@ -1,0 +1,5 @@
+<invoice>
+    <invoice_number>{{ invoice_number }}</invoice_number>
+    <customer>{{ customer_name }}</customer>
+    <!-- Other invoice data specific to the format -->
+</invoice>
