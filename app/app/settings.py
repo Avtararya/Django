@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'core',
     'user',
     'organization',
-    "test"
+    "test",
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -141,3 +144,7 @@ APPEND_SLASH = False
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]

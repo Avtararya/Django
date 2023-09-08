@@ -1,9 +1,14 @@
 from django.db import models
 
-class Invoice(models.Model):
-    invoice_number = models.CharField(max_length=20)
-    customer_name = models.CharField(max_length=100)
-    invoice_format = models.IntegerField()
+class Customer(models.Model):
+    GENRE_CHOICES = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+    ]
 
-    def __str__(self):
-        return self.invoice_number
+    customer_id = models.PositiveIntegerField(primary_key=True)
+    genre = models.CharField(max_length=6, choices=GENRE_CHOICES)
+    age = models.PositiveIntegerField()
+    annual_income = models.PositiveIntegerField()
+    spending_score = models.PositiveIntegerField()
+

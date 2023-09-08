@@ -1,6 +1,9 @@
+# myapp/urls.py
 from django.urls import path
-from .views import generate_invoice_xml
+from . import views
 
 urlpatterns = [
-    path('generate_invoice_xml/', generate_invoice_xml, name='generate_invoice_xml'),
+    path("customers/", views.get_customers, name="get_data"),
+    path("filter/", views.filter_customers, name="filter_data"),
+    path("add/", views.add_customer, name="add_customer"),
 ]
